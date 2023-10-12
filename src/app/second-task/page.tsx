@@ -5,9 +5,9 @@ import React from 'react';
 const SecondTaskPage = () => {
     return (
 
-        <div className='h-screen flex flex-col bg-slate-600'>
+        <div className='h-screen flex flex-col bg-darkBlue-900'>
             <PageHeader />
-            <main className='flex flex-row flex-1 px-20 bg-gray-400'>
+            <main className='flex flex-row flex-1 px-20 bg-darkBlue-900'>
                 <FilterCard />
             </main>
         </div>
