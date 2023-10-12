@@ -1,7 +1,13 @@
+import { UserSelectionProvider } from "@/components/user-context";
+
 export default function FirstTaskLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    return <section>{children}</section>;
+    return <UserSelectionProvider>
+        <section>
+            {children}
+        </section>
+    </UserSelectionProvider>;
 }

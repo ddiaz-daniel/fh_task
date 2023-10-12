@@ -1,29 +1,27 @@
-import { UserData, UsersData } from "@/types/types";
+import { CommentData } from "@/types/types";
 import { useEffect, useState } from "react";
 
-function useGetUsers() {
-    const [dataResponse, setDataResponse] = useState<UserData[] | null>(null);
+function useGetComments(id: number | undefined) {
+    const [dataResponse, setDataResponse] = useState<CommentData[] | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = '/api/users-data';
+                const url = `https://gorest.co.in/public/v2/posts/${id}/comments`;
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                    },
+                    }
                 });
 
                 if (!response.ok) {
                     console.error(response);
                     throw new Error('API request failed');
                 }
+                const fetchedData = await response.json() as CommentData[];
 
-                const fetchedData = await response.json() as UsersData;
-
-                setDataResponse(fetchedData?.data);
-
+                setDataResponse(fetchedData);
             } catch (error) {
                 console.error(error);
                 setDataResponse(null);
@@ -31,9 +29,9 @@ function useGetUsers() {
         };
 
         void fetchData();
-    }, []);
+    }, [id]);
 
     return dataResponse;
 }
 
-export default useGetUsers;
+export default useGetComments;

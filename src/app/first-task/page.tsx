@@ -1,12 +1,16 @@
+import UserContainer from '@/components/ui/cards-container/user-container';
 import PageHeader from '@/components/ui/page-header';
+import PostsContainer from '@/components/ui/posts-container/posts-container';
 import React from 'react';
 
 const FirstTaskPage = () => {
     return (
+
         <div className='h-screen flex flex-col bg-slate-600'>
             <PageHeader />
-            {/* Create a main that will be a middle container that contains the posts*/}
-            <main className='flex flex-col items-center justify-center flex-1 px-20 text-center bg-gray-400'>
+            <main className='flex flex-row flex-1 px-20 bg-gray-400'>
+                <UserContainer />
+                <PostsContainer />
             </main>
         </div>
     );
