@@ -2,7 +2,7 @@ import { PostData, CommentData } from '@/types/types';
 import React from 'react';
 import useGetComments from './get-comments';
 import Image from 'next/image';
-import { useUserSelection } from '@/components/user-context';
+import { useUserSelection } from '@/components/context/user-context';
 
 interface PostProps {
     post: PostData;

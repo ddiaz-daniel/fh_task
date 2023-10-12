@@ -33,3 +33,20 @@ export type error = {
     results: string[],
     status: string;
 };
+
+export type Country = {
+    country: string;
+};
+
+export type CountriesData = {
+    "Bunker fuels (Not in Total)": number;
+    "Cement": number;
+    "Country": string;
+    "Gas Flaring": number;
+    "Gas Fuel": number;
+    "Liquid Fuel": number;
+    "Per Capita": number;
+    "Solid Fuel": number;
+    "Total": number;
+    "Year": number;
+};

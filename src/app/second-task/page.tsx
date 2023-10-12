@@ -1,19 +1,17 @@
-import UserContainer from '@/components/ui/first-task/user-container';
 import PageHeader from '@/components/ui/page-header';
-import PostsContainer from '@/components/ui/first-task/posts-container';
+import FilterCard from '@/components/ui/second-task/filter-card/filter-card';
 import React from 'react';
 
-const FirstTaskPage = () => {
+const SecondTaskPage = () => {
     return (
 
         <div className='h-screen flex flex-col bg-slate-600'>
             <PageHeader />
             <main className='flex flex-row flex-1 px-20 bg-gray-400'>
-                <UserContainer />
-                <PostsContainer />
+                <FilterCard />
             </main>
         </div>
     );
 };
 
-export default FirstTaskPage;
+export default SecondTaskPage;

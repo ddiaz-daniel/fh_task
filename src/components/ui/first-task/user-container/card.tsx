@@ -1,15 +1,16 @@
 import { UserData } from '@/types/types';
 import React from 'react';
 import Image from 'next/image';
-import { useUserSelection } from '@/components/user-context';
+import { useUserSelection } from '@/components/context/user-context';
 
 interface CardProps {
     user: UserData;
 }
 
 const Card: React.FC<CardProps> = ({ user }) => {
-    const { setSelectedUser } = useUserSelection();
+    const { selectedUser, setSelectedUser } = useUserSelection();
     const statusDotColor = user.status === 'active' ? 'text-green-500' : 'text-gray-500';
+    const backgroundColor = selectedUser?.id === user.id ? 'bg-blue-100' : 'bg-white';
     const imageUrl = user.gender === "male" ? "/male.png" : "/female.png";
 
     const handleCardClick = () => {
@@ -17,7 +18,7 @@ const Card: React.FC<CardProps> = ({ user }) => {
     };
 
     return (
-        <div className="bg-white shadow-md flex flex-row py-4 px-2 w-full relative rounded hover:cursor-pointer" onClick={handleCardClick}>
+        <div className={`${backgroundColor} shadow-md flex flex-row py-4 px-2 w-full relative rounded hover:cursor-pointer`} onClick={handleCardClick}>
             <div className="rounded-l-lg overflow-hidden w-4/12">
                 <Image src={imageUrl} alt={`${user.name}'s profile`} width={150} height={150} className="rounded-full" />
             </div>

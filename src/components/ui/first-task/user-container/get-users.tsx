@@ -2,7 +2,13 @@ import { UserData } from "@/types/types";
 import { useEffect, useState } from "react";
 
 function useGetUsers() {
-    const [dataResponse, setDataResponse] = useState<UserData[] | null>(null);
+    const [dataResponse, setDataResponse] = useState<{
+        data: UserData[] | null;
+        isLoading: boolean;
+    }>({
+        data: null,
+        isLoading: true,
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,12 +27,16 @@ function useGetUsers() {
                 }
                 const fetchedData = await response.json() as UserData[];
 
-
-                setDataResponse(fetchedData);
-
+                setDataResponse({
+                    data: fetchedData,
+                    isLoading: false,
+                });
             } catch (error) {
                 console.error(error);
-                setDataResponse(null);
+                setDataResponse({
+                    data: null,
+                    isLoading: false,
+                });
             }
         };
 

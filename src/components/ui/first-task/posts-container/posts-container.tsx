@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import useGetPosts from "./get-posts";
-import { useUserSelection } from "@/components/user-context";
+import { useUserSelection } from "@/components/context/user-context";
 import PostCard from "./post-card";
 import { PostData } from "@/types/types";
 
-const MainContainer: React.FC = () => {
+const PostsContainer: React.FC = () => {
     const { selectedUser } = useUserSelection();
     const posts = useGetPosts(selectedUser?.id);
 
@@ -37,4 +37,4 @@ const MainContainer: React.FC = () => {
     );
 };
 
-export default MainContainer;
+export default PostsContainer;
