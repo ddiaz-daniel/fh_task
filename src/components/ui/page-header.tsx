@@ -29,6 +29,16 @@ const PageHeader = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link href="/third-task" className="text-white hover:text-amber-400 text-lg">
+                                Third Task
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/forth-task" className="text-white hover:text-amber-400 text-lg">
+                                Forth Task
+                            </Link>
+                        </li>
+                        <li>
                             <Link href="/contact" className="text-white hover:text-amber-400 text-lg">
                                 Contact
                             </Link>
