@@ -19,18 +19,18 @@ const ThirdTaskPage = () => {
                     <h2 className='text-2xl font-bold mb-2'>API Endpoints:</h2>
                     <ul className='list-disc pl-4 space-y-6'>
                         <li className='text-lg mb-2'>
-                            <strong>GET /states</strong>: Retrieve a list of all states and their IDs.
+                            <strong>GET api//states</strong>: Retrieve a list of all states and their IDs.
                             <p><a href={`${renderHost}/api/states`} className='text-blue-500 underline'>{`${renderHost}/api/states`}</a></p>
-
                         </li>
                         <li className='text-lg mb-2'>
-                            <strong>GET /state/:id</strong>: Retrieve the Obesity index and coordinates for a specific state by ID.
+                            <strong>GET /api/state/:id</strong>: Retrieve the Obesity index and coordinates for a specific state by ID.
                             <p><a href={`${renderHost}/api/state/1`} className='text-blue-500 underline'>{`${renderHost}/api/state/1`}</a></p>
                         </li>
                         <li className='text-lg mb-2'>
-                            <strong>GET /summary</strong>: Retrieve summary data, including the state with the highest and lowest obesity index, and the average country obesity index.
+                            <strong>GET /api/summary</strong>: Retrieve summary data, including the state with the highest and lowest obesity index, and the average country obesity index.
                             <p><a href={`${renderHost}/api/summary`} className='text-blue-500 underline'>{`${renderHost}/api/summary`}</a></p>
                         </li>
+
                     </ul>
                 </div>
             </main>

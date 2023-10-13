@@ -50,3 +50,36 @@ export type CountryData = {
     "Total": number;
     "Year": number;
 };
+
+export type GeoJSONFeature = {
+    type: "Feature";
+    properties: {
+        FID: number;
+        NAME: string;
+        Obesity: number;
+        SHAPE_Length: number;
+        SHAPE_Area: number;
+    };
+    geometry: {
+        type: "MultiPolygon";
+        coordinates: number[][][][];
+    };
+};
+
+export type GeoJSON = {
+    type: "FeatureCollection";
+    name: string;
+    crs: {
+        type: "name";
+        properties: {
+            name: string;
+        };
+    };
+    features: GeoJSONFeature[];
+};
+
+export type ObesityData = {
+    FID: number;
+    NAME: string;
+    Obesity: number;
+};
