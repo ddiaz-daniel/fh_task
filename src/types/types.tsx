@@ -38,7 +38,7 @@ export type Country = {
     country: string;
 };
 
-export type CountriesData = {
+export type CountryData = {
     "Bunker fuels (Not in Total)": number;
     "Cement": number;
     "Country": string;

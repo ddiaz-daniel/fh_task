@@ -14,9 +14,9 @@ type CountriesContextType = {
 const CountriesFilterContext = createContext<CountriesContextType | undefined>(undefined);
 
 export function CountriesFilterProvider({ children }: { children: ReactNode; }) {
-    const [selectedCountry, setSelectedCountry] = useState<string>('');
-    const [selectedStartYear, setSelectedStartYear] = useState<string>('');
-    const [selectedEndYear, setSelectedEndYear] = useState<string>('');
+    const [selectedCountry, setSelectedCountry] = useState<string>('GERMANY');
+    const [selectedStartYear, setSelectedStartYear] = useState<string>('1980');
+    const [selectedEndYear, setSelectedEndYear] = useState<string>('2023');
 
     return (
         <CountriesFilterContext.Provider value={{

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import useCountriesList from '../get-countries';
+import useCountriesList from './get-countries';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useCountryFilter } from '@/components/context/countries-context';
@@ -10,7 +10,8 @@ const FilterCard: React.FC = () => {
     const countriesList = useCountriesList().countriesData;
 
     const { selectedCountry, setSelectedCountry,
-        setSelectedStartYear, setSelectedEndYear } = useCountryFilter();
+        selectedStartYear, setSelectedStartYear,
+        selectedEndYear, setSelectedEndYear } = useCountryFilter();
 
     return (
         <section className="w-3/12 ">
@@ -19,7 +20,7 @@ const FilterCard: React.FC = () => {
                 <div className="mb-4">
                     <label className="block text-sm font-semibold text-black">Start Date:</label>
                     <DatePicker
-                        selected={new Date()}
+                        selected={new Date(selectedStartYear)}
                         onChange={(date) => {
                             if (date) {
                                 const year = date.getFullYear();
@@ -28,13 +29,13 @@ const FilterCard: React.FC = () => {
                         }}
                         showYearPicker
                         dateFormat="yyyy"
-                        className="border p-2 rounded-md"
+                        className="border p-2 rounded-md "
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-semibold text-black">End Date:</label>
                     <DatePicker
-                        selected={new Date()}
+                        selected={new Date(selectedEndYear)}
                         onChange={(date) => {
                             if (date) {
                                 const year = date.getFullYear();
@@ -51,9 +52,9 @@ const FilterCard: React.FC = () => {
                     <select
                         value={selectedCountry}
                         onChange={(e) => setSelectedCountry(e.target.value)}
-                        className="border p-2 rounded-md w-8/12 text-black"
+                        className="border p-2 rounded-md w-7/12 text-black"
                     >
-                        <option value="">All</option>
+                        <option value="none"></option>
                         {countriesList &&
                             countriesList.map((country, index) => (
                                 <option key={index} value={country.country}>
