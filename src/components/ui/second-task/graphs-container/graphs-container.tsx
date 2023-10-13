@@ -20,7 +20,7 @@ const GraphsContainer: React.FC = () => {
 
 
     return (
-        <div className="container flex flex-col w-2/3 bg-slate-200 my-4 py-8 rounded h-fit p-8">
+        <div className="container flex flex-col w-2/3 bg-slate-200 my-8 py-8 rounded h-fit p-8">
             <h2 className="text-2xl font-bold text-black w-full text-center">CO2 Emissions by Fuel Type</h2>
             <h2 className="text-xl font-bold text-black w-full text-center">
                 {selectedCountry}{" "}{selectedStartYear}{" - "}{selectedEndYear}
