@@ -1,7 +1,6 @@
 "use client";
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// Define the type for the context
 type CountriesContextType = {
     selectedCountry: string;
     setSelectedCountry: (country: string) => void;

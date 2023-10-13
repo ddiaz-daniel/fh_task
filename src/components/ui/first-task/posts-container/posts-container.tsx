@@ -4,10 +4,11 @@ import useGetPosts from "./get-posts";
 import { useUserSelection } from "@/components/context/user-context";
 import PostCard from "./post-card";
 import { PostData } from "@/types/types";
+import LoadingIndicator from "../../loading-indicator";
 
 const PostsContainer: React.FC = () => {
     const { selectedUser } = useUserSelection();
-    const posts = useGetPosts(selectedUser?.id);
+    const { posts, isLoading } = useGetPosts(selectedUser?.id);
 
     if (!selectedUser) {
         return <div className="container flex flex-row w-2/3 bg-slate-200 my-4 rounded h-fit">
@@ -29,9 +30,11 @@ const PostsContainer: React.FC = () => {
             </div>
             <div className="flex flex-col space-y-3 px-8">
 
-                {posts && posts?.length > 0 ? posts?.map((item: PostData) => (
-                    <PostCard key={item.id} post={item} />
-                )) : <p className="text-2xl font-bold text-black w-full text-center p-8">No posts</p>}
+                {isLoading ?
+                    <LoadingIndicator /> :
+                    posts && posts?.length > 0 ? posts?.map((item: PostData) => (
+                        <PostCard key={item.id} post={item} />
+                    )) : <p className="text-2xl font-bold text-black w-full text-center p-8">No posts</p>}
             </div>
         </div>
     );

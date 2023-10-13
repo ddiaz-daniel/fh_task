@@ -2,7 +2,6 @@
 import { UserData } from '@/types/types';
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// Define the type for the context
 type UserSelectionContextType = {
     selectedUser: UserData | null;
     setSelectedUser: (user: UserData | null) => void;

@@ -2,12 +2,13 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import useGetGeoData from './get-geodata';
+import LoadingIndicator from '../loading-indicator';
 
 function USMap() {
-    const geoData = useGetGeoData().data;
+    const { data, isLoading } = useGetGeoData();
 
     useEffect(() => {
-        if (geoData) {
+        if (data) {
             const projection = d3.geoAlbersUsa()
                 .scale(1000)
                 .translate([400, 300]);
@@ -15,9 +16,8 @@ function USMap() {
 
             const svg = d3.select('svg');
 
-            // Define a color scale for the heatmap
             const colorScale = d3.scaleSequential(d3.interpolateYlOrRd)
-                .domain([0, 40]); // Adjust the domain according to your data
+                .domain([0, 40]);
 
             // Create a tooltip div
             const tooltip = d3.select("body").append("div")
@@ -25,7 +25,7 @@ function USMap() {
                 .style("opacity", 0);
 
             svg.selectAll('path')
-                .data(geoData.features)
+                .data(data.features)
                 .enter()
                 .append('path')
                 .attr('d', path)
@@ -33,7 +33,6 @@ function USMap() {
                 .attr('fill', (d) => colorScale(d.properties.Obesity))
                 .on("mouseover", (event, d) => {
                     if (d && d.properties) {
-                        // Show the tooltip on mouseover
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.9)
@@ -61,10 +60,8 @@ function USMap() {
 
             const legendTicks = d3.range(0, 45, 10);
 
-            // Calculate the total width of the legend
             const legendWidth = legendTicks.length * 100;
 
-            // Position the legend at the bottom of the map
             legend.attr('transform', `translate(${(800 - legendWidth) / 2}, 550)`);
 
             legend.selectAll('rect')
@@ -84,11 +81,19 @@ function USMap() {
                 .attr('y', 40)
                 .text((d) => `${d}%`);
         }
-    }, [geoData]);
-
+    }, [data]);
     return (
         <div className="us-map-container">
-            <svg width={800} height={650}></svg>
+            {isLoading ? (
+                <LoadingIndicator />
+            ) : (
+                <div className="flex flex-col space-y-3">
+                    <svg width={800} height={650}></svg>
+                </div>
+            )}
+
+
+
         </div>
     );
 }

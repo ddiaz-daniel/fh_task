@@ -33,7 +33,7 @@ const ContactTaskPage = () => {
                     <p>
                         <strong>Tech Stack:</strong>
                         <ul className="list-none mt-2 flex flex-row space-x-4">
-                            <li className="flex flex-col items-center"> {/* Center horizontally and vertically */}
+                            <li className="flex flex-col items-center">
                                 <SiNextdotjs size={50} />
                                 <div>Next.js</div>
                             </li>

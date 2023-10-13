@@ -2,10 +2,13 @@ import { PostData } from "@/types/types";
 import { useEffect, useState } from "react";
 
 function useGetPosts(id: number | undefined) {
-    const [dataResponse, setDataResponse] = useState<PostData[] | null>(null);
+    const [posts, setPosts] = useState<PostData[] | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true);
+
             try {
                 const url = `https://gorest.co.in/public/v2/users/${id}/posts`;
                 const response = await fetch(url, {
@@ -21,17 +24,19 @@ function useGetPosts(id: number | undefined) {
                 }
                 const fetchedData = await response.json() as PostData[];
 
-                setDataResponse(fetchedData);
+                setPosts(fetchedData);
+                setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setDataResponse(null);
+                setPosts(null);
+                setIsLoading(false);
             }
         };
 
         void fetchData();
     }, [id]);
 
-    return dataResponse;
+    return { posts, isLoading };
 }
 
 export default useGetPosts;
